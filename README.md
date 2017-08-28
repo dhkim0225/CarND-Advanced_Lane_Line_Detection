@@ -15,10 +15,10 @@ The goals / steps of this project are the following:
 
 [image1]: ./output_images/undistort_chessboard.png "Undistorted"
 [image2]: ./output_images/test_images_output/combined_threshold_straight_lines1.png "Binary Example"
-[image3]: ./output_images/output/warped_straight_lines.png "Warp Example"
-[image4]: ./output_images/output/find_lines_with_window.png "Find lane_line with windows"
-[image5]: ./output_images/output/find_lines_without_window.png "Find lane_line without windows"
-[image6]: ./output_images/output/final_output.png "Output"
+[image3]: ./output_images/test_images_output/warped_straight_lines.png "Warp Example"
+[image4]: ./output_images/test_images_output/find_lines_with_window.png "Find lane_line with windows"
+[image5]: ./output_images/test_images_output/find_lines_without_window.png "Find lane_line without windows"
+[image6]: ./output_images/test_images_output/final_output.png "Output"
 [video1]: ./project_video.mp4 "Video"
 
 ### Camera Calibration
