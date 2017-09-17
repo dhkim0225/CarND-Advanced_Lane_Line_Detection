@@ -53,12 +53,15 @@ Here's an example of my output for this step.  (note: this is not actually from 
 ![alt text][image2]
 
 Its' process is in `getCombined()` function.
-The getCombined function receives the gray image and the s_channel of the image and return binary image.
+The getCombined function receives the gray image && s_channel, b_channel, l_channel of the image and return binary image.
 
 
 I created an appropriate binary image using the s-channel of hls and sobel by x-direction.
-A binary image, sxbinary, was created by placing a sobel image in a gray image and a sobelx image with threshold values of 20 and 100, respectively.
-Also, I created the s_binary by setting the threshold value to 100 and 255fh using the input s_channel.
+A binary image, sxbinary, was created by placing a sobel image in a gray image and a sobelx image with threshold values of 40 and 100, respectively.
+Also, I created the s_binary by setting the threshold value to 200 and 255fh using the input s_channel.
+                    l_binary by setting the threshold value to 220 and 255fh using the input s_channel.
+                    b_binary by setting the threshold value to 0 and 5fh using the input s_channel.
+
 Return the combined binary created by s_binary and sxbinary in the getCombined function.
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
@@ -68,18 +71,18 @@ The `unwarp()` function takes as inputs an image (`img`),
 I chose the hardcode the source and destination points in the following manner:
 
 ```python
-src = np.float32([[704, 453], [1280, 720], [0, 720], [576, 453]])
-dst = np.float32([[960, 0], [960, 720], [320, 720], [320, 0]])
+src = np.float32([[300, 655], [550, 480], [730, 480], [1000, 650]])
+dst = np.float32([[400, 650], [400, 0], [800, 0], [800, 650]]
 ```
 
 This resulted in the following source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
-| 704, 453      | 960, 0        | 
-| 1280, 720     | 960, 720      |
-| 0, 720        | 320, 720      |
-| 576, 453      | 320, 0        |
+| 300, 655      | 400, 650      |
+| 550, 480      | 400, 0        |
+| 730, 480      | 800, 0        |
+| 1000, 650     | 800, 650      |
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
