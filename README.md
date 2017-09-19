@@ -44,27 +44,7 @@ like this.
 img1 = cal_undistort(img1, objpoints, imgpoints)
 
 
-
-#### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
-
-I used a combination of color and gradient thresholds to generate a binary image.
-Here's an example of my output for this step.  (note: this is not actually from one of the test images)
-
-![alt text][image2]
-
-Its' process is in `getCombined()` function.
-The getCombined function receives the gray image && s_channel, b_channel, l_channel of the image and return binary image.
-
-
-I created an appropriate binary image using the s-channel of hls and sobel by x-direction.
-A binary image, sxbinary, was created by placing a sobel image in a gray image and a sobelx image with threshold values of 40 and 100, respectively.
-Also, I created the s_binary by setting the threshold value to 200 and 255fh using the input s_channel.
-                    l_binary by setting the threshold value to 220 and 255fh using the input s_channel.
-                    b_binary by setting the threshold value to 0 and 5fh using the input s_channel.
-
-Return the combined binary created by s_binary and sxbinary in the getCombined function.
-
-#### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
+#### 2. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
 The code for my perspective transform includes a function called `unwarp()`.
 The `unwarp()` function takes as inputs an image (`img`),
@@ -87,6 +67,33 @@ This resulted in the following source and destination points:
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
 ![alt text][image3]
+
+
+#### 3. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
+
+I used a combination of color and gradient thresholds to generate a binary image.
+Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+
+![alt text][image2]
+
+Its' process is in `getCombined()` function.
+The getCombined function receives the image of the image and return binary image.
+
+I use 6 datas to make lane recognition.
+
+Here's 2 datas.
+The weight of x direction and y direction was set to 7:3 when xy-sobel was used.
+
+v-channel of hlv and sobel by xy-direction - threshold 220, 255.
+r-channel of rgb and sobel by xy-direction - threshold 220, 255.
+
+Here's 4 datas. (Just use cv2.in_range function)
+HSV - threshold (20, 100, 100), (50, 255, 255)
+HSV - threshold (0, 0, 197), (255, 20, 255))
+HLS - threshold (0, 195, 0), (255, 255, 60))
+RGB - threshold (200,200,200), (255,255,255))
+
+Return the combined binary created by 6 elements in the getCombined function.
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
